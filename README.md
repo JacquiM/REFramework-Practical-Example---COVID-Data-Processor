@@ -10,3 +10,6 @@ In the context of Robotic Process Automation (RPA), a Dispatcher is a process or
 ## Performer Architecture:
 The flowchart represents a Performer Process, a common component in Robotic Process Automation (RPA) that executes tasks based on data received from a Dispatcher Process. The process starts by retrieving items from a queue, which likely contains the filtered data prepared by the Dispatcher. It then initialises the environment by opening the necessary application. Next, the process captures the relevant details from the queued items and submits these details, possibly into another system or database. Finally, the process cleans up the environment, ensuring no residual data or open applications remain, before concluding. The Performer Process is crucial in an RPA workflow as it carries out the detailed tasks that transform data into actionable outcomes.
 ![Performer](https://github.com/user-attachments/assets/45d008a5-1f33-420a-ab34-617fcaa7bf3e)
+
+### Additional Information
+* The data should be collected from Data.World: "https://data.world/markmarkoh/coronavirus-data"
