@@ -1,0 +1,344 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1233,3474</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="516,3409" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="454,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Power Apps Studio  |  COVID Stats Tracker App (Editing)" sap:VirtualizedContainerService.HintSize="454,3061" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,2821" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'DIV'" sap:VirtualizedContainerService.HintSize="354,225" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="92899ed4-be1c-4d27-a810-9801b301ae5b" CvTextArea="1491, 265, 38, 37" CvTextArgument="+" CvType="Text" DesignTimeRectangle="1480, 248, 62, 70" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aaname='                 ' parentid='publishedCanvas' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aaname='                 ' parentid='publishedCanvas' tag='DIV' type='' class='powerapps-icon no-focus-outline' /&gt;" Guid="a4e07b20-0f69-4970-b0a6-c5b866924c65" InformativeScreenshot="e19ff9cce9d0b6c943cfbb3928731e99.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT location'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;Location&quot;).ToString]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="a98f7448-c5c7-48ba-9e3e-f3c3a943e012" CvElementArea="247, 326, 687, 41" CvType="InputBox" DesignTimeRectangle="247, 326, 687, 41" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Location' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Location' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="941f0619-fe8f-4e4a-b378-b1f59a4d72fa" InformativeScreenshot="1d3adaf7338222e66b26423f988b7f3e.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="a98f7448-c5c7-48ba-9e3e-f3c3a943e012" CvTextArea="249, 305, 62, 14" CvTextArgument="Location" CvType="Text" DesignTimeRectangle="262, 331, 658, 34" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Location' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Location' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="15c13ddb-d70d-4c36-a481-9d3699f69eca" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT date'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;Date&quot;).ToString]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="a9e9de92-add1-4835-96e9-f55569f293a6" CvElementArea="984, 326, 687, 41" CvType="InputBox" DesignTimeRectangle="1000, 331, 658, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='DateString' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='DateString' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="8b6f5c8d-2a01-4958-a625-914b62b3ab40" InformativeScreenshot="d7599e57bed2f2b5307ceff2c621871d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="a9e9de92-add1-4835-96e9-f55569f293a6" CvTextArea="987, 304, 77, 19" CvTextArgument="DateString" CvType="Text" DesignTimeRectangle="987, 302, 684, 22" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl idx='9' tag='PRE' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl type='' tag='PRE' class='fui-Text ___1wm8i6k fk6fouc fkhj508 f1i3iumi fl43uef fpgzoln ftgm304 fv5qcn6 f1p9o1ba f1sil6mw f1cmbuwj f1hu3pq6 f11qmguv f19f4twv f1tyq0we fly5x3f f1ids18y' aaname='DateString' check:innerText='DateString' /&gt;" Guid="262b308b-bde7-4a48-bc0c-08aaa2d23d77" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT new cases'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;NewCases&quot;).ToString.Replace(&quot;.0&quot;,&quot;&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="518c3389-f8f9-4143-b1e1-441224124962" CvElementArea="247, 405, 688, 42" CvType="InputBox" DesignTimeRectangle="262, 410, 658, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='New Cases' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='New Cases' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="5bcffe98-d637-4351-9ee8-69c9e294f17e" InformativeScreenshot="3863f8cc8eac28fcb0491f378ec7d89f.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="518c3389-f8f9-4143-b1e1-441224124962" CvTextArea="249, 385, 78, 14" CvTextArgument="New Cases" CvType="Text" DesignTimeRectangle="249, 381, 684, 22" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl idx='3' tag='PRE' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl type='' tag='PRE' class='fui-Text ___1wm8i6k fk6fouc fkhj508 f1i3iumi fl43uef fpgzoln ftgm304 fv5qcn6 f1p9o1ba f1sil6mw f1cmbuwj f1hu3pq6 f11qmguv f19f4twv f1tyq0we fly5x3f f1ids18y' aaname='New Cases' check:innerText='New Cases' /&gt;" Guid="812051da-c165-49f2-91d6-8860e51dc872" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT new deaths'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;NewDeaths&quot;).ToString.Replace(&quot;.0&quot;,&quot;&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="11a8cd71-be91-4e5e-9f2f-3af8d0bbf350" CvElementArea="984, 405, 688, 42" CvType="InputBox" DesignTimeRectangle="1000, 410, 658, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='New Deaths' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='New Deaths' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="5171c0d0-b4c8-4194-bc63-63e7944aeac2" InformativeScreenshot="dbcf0ca07e346c6e041398c329a2c726.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="11a8cd71-be91-4e5e-9f2f-3af8d0bbf350" CvTextArea="987, 384, 88, 15" CvTextArgument="New Deaths" CvType="Text" DesignTimeRectangle="987, 381, 684, 22" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl idx='4' tag='PRE' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl type='' tag='PRE' class='fui-Text ___1wm8i6k fk6fouc fkhj508 f1i3iumi fl43uef fpgzoln ftgm304 fv5qcn6 f1p9o1ba f1sil6mw f1cmbuwj f1hu3pq6 f11qmguv f19f4twv f1tyq0we fly5x3f f1ids18y' aaname='New Deaths' check:innerText='New Deaths' /&gt;" Guid="21582efc-e740-49ec-b4ba-d9134924ccd2" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT total cases'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;TotalCases&quot;).ToString.Replace(&quot;.0&quot;,&quot;&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="11a8cd71-be91-4e5e-9f2f-3af8d0bbf350" CvElementArea="246, 485, 688, 41" CvType="InputBox" DesignTimeRectangle="262, 490, 658, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Total Cases' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Total Cases' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="2a1bf35b-29ae-4676-87f8-c10922a38caf" InformativeScreenshot="3fa0bcd39c4b6a82a0731cdcea76bb88.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="11a8cd71-be91-4e5e-9f2f-3af8d0bbf350" CvTextArea="248, 463, 81, 15" CvTextArgument="Total Cases" CvType="Text" DesignTimeRectangle="249, 460, 684, 23" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl idx='5' tag='PRE' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl type='' tag='PRE' class='fui-Text ___1wm8i6k fk6fouc fkhj508 f1i3iumi fl43uef fpgzoln ftgm304 fv5qcn6 f1p9o1ba f1sil6mw f1cmbuwj f1hu3pq6 f11qmguv f19f4twv f1tyq0we fly5x3f f1ids18y' aaname='Total Cases' check:innerText='Total Cases' /&gt;" Guid="79b343b9-f45b-4294-b15c-462178bacbf9" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT total deaths'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_6" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;TotalDeaths&quot;).ToString.Replace(&quot;.0&quot;,&quot;&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="11a8cd71-be91-4e5e-9f2f-3af8d0bbf350" CvElementArea="983, 485, 688, 41" CvType="InputBox" DesignTimeRectangle="1000, 490, 658, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Total Deaths' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Total Deaths' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="16485f4f-74bf-42b4-a60d-6c66fd4c515b" InformativeScreenshot="6728889c3020c64049b40d13f6329b05.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="11a8cd71-be91-4e5e-9f2f-3af8d0bbf350" CvTextArea="986, 463, 91, 15" CvTextArgument="Total Deaths" CvType="Text" DesignTimeRectangle="987, 460, 684, 23" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl idx='6' tag='PRE' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl type='' tag='PRE' class='fui-Text ___1wm8i6k fk6fouc fkhj508 f1i3iumi fl43uef fpgzoln ftgm304 fv5qcn6 f1p9o1ba f1sil6mw f1cmbuwj f1hu3pq6 f11qmguv f19f4twv f1tyq0we fly5x3f f1ids18y' aaname='Total Deaths' check:innerText='Total Deaths' /&gt;" Guid="7fbb2953-898d-450e-b968-945a2000ecb1" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT weekly cases'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;WeeklyCases&quot;).ToString.Replace(&quot;.0&quot;,&quot;&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="be535a5b-aa6a-40fc-8bc2-373763e17974" CvElementArea="246, 565, 688, 40" CvType="InputBox" DesignTimeRectangle="262, 569, 658, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Weekly Cases' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Weekly Cases' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="0dac839e-1c22-4ea4-8e5a-5d68542cad9a" InformativeScreenshot="6cf8d1c18be949ff869cff6f6a46fdec.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="be535a5b-aa6a-40fc-8bc2-373763e17974" CvTextArea="248, 543, 99, 19" CvTextArgument="Weekly Cases" CvType="Text" DesignTimeRectangle="249, 540, 684, 22" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl idx='7' tag='PRE' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl type='' tag='PRE' class='fui-Text ___1wm8i6k fk6fouc fkhj508 f1i3iumi fl43uef fpgzoln ftgm304 fv5qcn6 f1p9o1ba f1sil6mw f1cmbuwj f1hu3pq6 f11qmguv f19f4twv f1tyq0we fly5x3f f1ids18y' aaname='Weekly Cases' check:innerText='Weekly Cases' /&gt;" Guid="5ec63413-613b-4010-8c15-455a6cf87465" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT weekly deaths'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,286" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Text="[in_TransactionItem. SpecificContent(&quot;WeeklyDeaths&quot;).ToString.Replace(&quot;.0&quot;,&quot;&quot;)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="be535a5b-aa6a-40fc-8bc2-373763e17974" CvElementArea="983, 565, 689, 41" CvType="InputBox" DesignTimeRectangle="1000, 569, 658, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Weekly Deaths' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Weekly Deaths' tag='INPUT' type='text' class='fui-Input__input rvp2gzh ___9xd2bv0 f1l02sjl f1cmbuwj fly5x3f f1pivz5x' aaname='' /&gt;" Guid="e14ea24d-8fbb-4c83-808e-283afb4422bb" InformativeScreenshot="4f0e033bc87a5ba851bc95f439b1144d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="be535a5b-aa6a-40fc-8bc2-373763e17974" CvTextArea="986, 543, 109, 19" CvTextArgument="Weekly Deaths" CvType="Text" DesignTimeRectangle="987, 540, 684, 22" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl idx='8' tag='PRE' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl type='' tag='PRE' class='fui-Text ___1wm8i6k fk6fouc fkhj508 f1i3iumi fl43uef fpgzoln ftgm304 fv5qcn6 f1p9o1ba f1sil6mw f1cmbuwj f1hu3pq6 f11qmguv f19f4twv f1tyq0we fly5x3f f1ids18y' aaname='Weekly Deaths' check:innerText='Weekly Deaths' /&gt;" Guid="84bd478f-c946-4311-8f4c-ab838a2ddcad" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="354,218" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cb17e62e-ba2a-4a9f-8190-2d2c727b4b45" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" CVScreenId="d992792b-c5f6-4616-b7ae-76b251d1516a" CvElementArea="1532, 934, 139, 40" CvTextArea="1575, 946, 55, 15" CvTextArgument="Submit" CvType="Button" DesignTimeRectangle="1535, 936, 136, 36" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Submit form button' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aria-label='Submit form button' tag='BUTTON' type='button' class='fui-Button r1alrhcs ___v1szmu0 ffp7eso f1p3nwhy f11589ue f1q5o8ev f1pdflbu f1phragk f15wkkf3 f1s2uweq fr80ssc f1ukrpxl fecsdlb f1rq72xc fnp9lpt f1h0usnq fs4ktlq f16h9ulv fx2bmrt f1d6v5y2 f1rirnrt f1uu00uk fkvaka8 f1ux7til f9a0qzu f1lkg8j3 fkc42ay fq7113v ff1wgvm fiob0tu f1j6scgf f1x4h75k f4xjyn1 fbgcvur f1ks1yx8 f1o6qegi fcnxywj fmxjhhp f9ddjv3 f17t0x8g f194v5ow f1qgg65p fk7jm04 fhgccpy f32wu9k fu5nqqq f13prjl2 f1czftr5 f1nl83rv f12k37oa fr96u23 f1l02sjl f1q0iipr f1069l7w f12kltsn fly5x3f fv1hkdr f1xlh39d' aaname='Submit' check:innerText='Submit' /&gt;" Guid="39ae307f-1b31-4b31-8c98-345f1c582c90" InformativeScreenshot="011efd7311756f5ebd9c81917311f013.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="d992792b-c5f6-4616-b7ae-76b251d1516a" CvElementArea="1532, 934, 139, 40" CvTextArea="1575, 946, 55, 15" CvTextArgument="Submit" CvType="Button" DesignTimeRectangle="1577, 943, 51, 23" ElementType="Text" FullSelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aaname='Submit' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl name='EmbeddedStudio' tag='IFRAME' /&gt;&lt;webctrl aaname='Submit' tag='SPAN' type='' class='' check:innerText='Submit' /&gt;" Guid="cac18e06-5f90-4b13-8f18-7407f738d4a2" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Edge" IconBase64="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" InformativeScreenshot="5ffbc581ef190f3eb4ed1578c1fc0fe8.jpg" Selector="&lt;html app='msedge.exe' title='Power Apps Studio  |  COVID Stats Tracker App (Editing)' /&gt;" Title="Power Apps Studio  |  COVID Stats Tracker App (Editing)" Url="https://make.powerapps.com/e/d80c19c9-6957-ebfe-a554-96aa7e14134d/canvas?utm_source=PAMarketing&amp;utm_medium=header&amp;utm_campaign=signin&amp;referrer=AppsPage&amp;action=edit&amp;form-factor=tablet&amp;app-id=%2Fproviders%2FMicrosoft.PowerApps%2Fapps%2Fdfb7784b-5510-4aea-bc26-210b34e1ce8d" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
